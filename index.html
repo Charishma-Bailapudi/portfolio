@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aswini Charishma Bailapudi — charishma@portfolio</title>
+  <meta name="description" content="Aswini Charishma Bailapudi — Backend Software Engineer specializing in distributed systems, clearing pipelines, and event-driven architecture." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%23111622%22/><text x=%2250%22 y=%2268%22 font-family=%22monospace%22 font-size=%2254%22 font-weight=%22bold%22 fill=%22%237ee787%22 text-anchor=%22middle%22>&gt;_</text></svg>" />
+
+  <!-- Google Font: JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            mono: ['"JetBrains Mono"', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'monospace'],
+          },
+          colors: {
+            obsidian: '#0b0e14',
+            surface: '#111622',
+            surfaceAlt: '#0e131d',
+            borderLine: '#222938',
+            borderHover: '#344058',
+            phosphor: '#7ee787',
+            cyanAccent: '#8ad4ff',
+            amberAccent: '#f2b544',
+            fgMain: '#dce3ee',
+            fgDim: '#7a8599',
+          },
+          keyframes: {
+            blink: {
+              '0%, 100%': { opacity: '1' },
+              '50%': { opacity: '0' },
+            },
+          },
+          animation: {
+            blink: 'blink 1s step-end infinite',
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    /* Subtle scrollbar and selection styling matching the obsidian terminal palette */
+    ::selection {
+      background-color: rgba(126, 231, 135, 0.22);
+      color: #ffffff;
+    }
+    html {
+      scroll-padding-top: 4.5rem;
+    }
+  </style>
+</head>
+<body class="bg-obsidian text-fgMain font-mono text-[14px] sm:text-[15px] leading-relaxed antialiased overflow-x-hidden selection:bg-phosphor/20">
+
+  <!-- 1. STICKY TOP WINDOW BAR -->
+  <header class="sticky top-0 z-40 bg-surface/95 backdrop-blur-md border-b border-borderLine">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 py-2.5 flex flex-wrap items-center justify-between gap-2 text-xs">
+      
+      <!-- macOS Window Controls + Session Title -->
+      <div class="flex items-center gap-3 min-w-0">
+        <div class="flex items-center gap-1.5 shrink-0" aria-hidden="true">
+          <span class="w-2.5 h-2.5 rounded-full bg-[#ff5f56]/85 border border-[#e0443e]/50"></span>
+          <span class="w-2.5 h-2.5 rounded-full bg-[#ffbd2e]/85 border border-[#dea123]/50"></span>
+          <span class="w-2.5 h-2.5 rounded-full bg-[#27c93f]/85 border border-[#1aab29]/50"></span>
+        </div>
+        <a href="#" class="text-fgDim hover:text-white transition-colors truncate font-medium">
+          charishma@portfolio <span class="text-fgDim/60">·</span> <span class="text-cyanAccent">zsh</span>
+        </a>
+      </div>
+
+      <!-- Live SSH Status Badge -->
+      <div class="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full bg-obsidian border border-borderLine text-[11px] text-fgDim shrink-0">
+        <span class="relative flex h-2 w-2">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-phosphor opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-2 w-2 bg-phosphor"></span>
+        </span>
+        <span>SSH · Bangalore · <span class="text-phosphor">online</span></span>
+      </div>
+    </div>
+
+    <!-- Quick-Nav Command Bar -->
+    <nav aria-label="Section navigation" class="border-t border-borderLine/70 bg-surfaceAlt/90">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 py-1.5 flex items-center gap-1.5 sm:gap-3 overflow-x-auto text-xs">
+        <span class="text-phosphor select-none shrink-0">$</span>
+        <a href="#about" data-nav="about" class="nav-link px-2 py-1 rounded text-fgDim hover:text-cyanAccent hover:bg-surface transition-colors shrink-0">#about</a>
+        <a href="#projects" data-nav="projects" class="nav-link px-2 py-1 rounded text-fgDim hover:text-cyanAccent hover:bg-surface transition-colors shrink-0">#projects</a>
+        <a href="#stack" data-nav="stack" class="nav-link px-2 py-1 rounded text-fgDim hover:text-cyanAccent hover:bg-surface transition-colors shrink-0">#stack</a>
+        <a href="#experience" data-nav="experience" class="nav-link px-2 py-1 rounded text-fgDim hover:text-cyanAccent hover:bg-surface transition-colors shrink-0">#experience</a>
+        <a href="#contact" data-nav="contact" class="nav-link px-2 py-1 rounded text-fgDim hover:text-cyanAccent hover:bg-surface transition-colors shrink-0">#contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- MAIN CONTAINER -->
+  <main class="max-w-3xl mx-auto px-4 sm:px-6 pt-10 sm:pt-14 pb-20 space-y-16">
+
+    <!-- 2. HERO SECTION -->
+    <section aria-labelledby="hero-heading" class="space-y-6">
+      <div class="space-y-2">
+        <div class="inline-flex items-center gap-2 text-xs text-phosphor">
+          <span>~/portfolio</span>
+          <span class="text-fgDim">/</span>
+          <span class="text-amberAccent">main*</span>
+        </div>
+        <h1 id="hero-heading" class="text-2xl sm:text-4xl font-bold tracking-tight text-white">
+          Aswini Charishma Bailapudi<span class="text-phosphor">.</span>
+        </h1>
+        <p class="text-fgDim text-sm sm:text-base">
+          Backend Software Engineer <span class="text-borderHover">·</span> distributed systems &amp; event-driven architecture
+        </p>
+      </div>
+
+      <!-- Embedded Interactive Terminal Preview Box -->
+      <div id="terminal-window" class="rounded-lg bg-surface border border-borderLine shadow-2xl shadow-black/40 overflow-hidden">
+        <!-- Terminal Window Titlebar -->
+        <div class="flex items-center justify-between px-4 py-2.5 bg-surfaceAlt border-b border-borderLine text-xs">
+          <div class="flex items-center gap-2 text-fgDim">
+            <span class="text-cyanAccent font-medium">~/about</span>
+          </div>
+          <span class="px-2 py-0.5 rounded bg-obsidian border border-borderLine text-[11px] text-amberAccent font-medium">
+            zsh
+          </span>
+        </div>
+
+        <!-- Terminal Body -->
+        <div id="terminal-body" class="p-4 sm:p-5 space-y-4 text-[13px] sm:text-[14px] cursor-text">
+          <!-- Static Initial Commands -->
+          <div class="space-y-1">
+            <div class="flex items-center gap-2">
+              <span class="text-phosphor select-none">$</span>
+              <span class="text-white font-medium">whoami</span>
+            </div>
+            <div class="text-fgMain pl-4">
+              charishma — System Engineer, TCS BFSI Product Engineering
+            </div>
+          </div>
+
+          <div class="space-y-1">
+            <div class="flex items-center gap-2">
+              <span class="text-phosphor select-none">$</span>
+              <span class="text-white font-medium">cat location.txt</span>
+            </div>
+            <div class="text-fgMain pl-4">
+              Bangalore, India
+            </div>
+          </div>
+
+          <div class="space-y-1">
+            <div class="flex items-center gap-2">
+              <span class="text-phosphor select-none">$</span>
+              <span class="text-white font-medium">ls projects/ --featured</span>
+            </div>
+            <div class="pl-4 flex flex-wrap gap-x-4 gap-y-1 text-cyanAccent">
+              <a href="#projects" class="hover:underline">timelesstalk.git</a>
+              <a href="#projects" class="hover:underline">upi-daily-budget.git</a>
+              <a href="#projects" class="hover:underline">distributed-order-processing-platform.git</a>
+              <a href="#projects" class="hover:underline">distributed-rate-limiter.git</a>
+            </div>
+          </div>
+
+          <!-- Dynamic Command History Output -->
+          <div id="terminal-history" class="space-y-3 empty:hidden" aria-live="polite"></div>
+
+          <!-- Interactive Command Input Prompt -->
+          <form id="terminal-form" class="pt-1 flex items-center gap-2" autocomplete="off">
+            <label for="terminal-input" class="text-phosphor select-none shrink-0 flex items-center gap-1.5">
+              <span class="hidden sm:inline text-fgDim">charishma@portfolio:</span><span>$</span>
+            </label>
+            <div class="relative flex-1 flex items-center min-w-0">
+              <input
+                id="terminal-input"
+                type="text"
+                spellcheck="false"
+                autocapitalize="off"
+                autocomplete="off"
+                placeholder="type 'help' or click a command below..."
+                aria-label="Interactive terminal command input"
+                class="w-full bg-transparent text-white placeholder:text-fgDim/55 focus:outline-none caret-phosphor pr-5"
+              />
+              <span aria-hidden="true" class="text-phosphor animate-blink select-none pointer-events-none ml-0.5">▍</span>
+            </div>
+          </form>
+
+          <!-- Quick Command Chips -->
+          <div class="pt-2 border-t border-borderLine/70 flex flex-wrap items-center gap-1.5 text-xs">
+            <span class="text-fgDim mr-1">try:</span>
+            <button type="button" data-cmd="help" class="cmd-chip px-2.5 py-1 rounded bg-obsidian hover:bg-borderLine/70 text-fgDim hover:text-phosphor border border-borderLine transition-colors">help</button>
+            <button type="button" data-cmd="whoami" class="cmd-chip px-2.5 py-1 rounded bg-obsidian hover:bg-borderLine/70 text-fgDim hover:text-cyanAccent border border-borderLine transition-colors">whoami</button>
+            <button type="button" data-cmd="location" class="cmd-chip px-2.5 py-1 rounded bg-obsidian hover:bg-borderLine/70 text-fgDim hover:text-cyanAccent border border-borderLine transition-colors">location</button>
+            <button type="button" data-cmd="projects" class="cmd-chip px-2.5 py-1 rounded bg-obsidian hover:bg-borderLine/70 text-fgDim hover:text-cyanAccent border border-borderLine transition-colors">projects</button>
+            <button type="button" data-cmd="stack" class="cmd-chip px-2.5 py-1 rounded bg-obsidian hover:bg-borderLine/70 text-fgDim hover:text-cyanAccent border border-borderLine transition-colors">stack</button>
+            <button type="button" data-cmd="contact" class="cmd-chip px-2.5 py-1 rounded bg-obsidian hover:bg-borderLine/70 text-fgDim hover:text-cyanAccent border border-borderLine transition-colors">contact</button>
+            <button type="button" data-cmd="clear" class="cmd-chip px-2.5 py-1 rounded bg-obsidian hover:bg-borderLine/70 text-fgDim hover:text-amberAccent border border-borderLine transition-colors">clear</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. // ABOUT SECTION -->
+    <section id="about" aria-labelledby="about-heading" class="space-y-5">
+      <div class="space-y-1">
+        <h2 id="about-heading" class="text-xs uppercase tracking-wider text-fgDim font-semibold">// about</h2>
+        <div class="flex items-center gap-2 text-sm">
+          <span class="text-phosphor select-none">$</span>
+          <span class="text-white font-medium">cat about.txt</span>
+        </div>
+      </div>
+
+      <p class="text-fgMain leading-7">
+        I build backend systems that move money and messages reliably at scale — clearing pipelines processing millions of trades a day, caching layers that cut latency by 70%, and the occasional side project where I get to be the whole stack. Currently exploring retrieval-augmented generation and agentic tooling.
+      </p>
+
+      <!-- Three Terminal Stat Boxes -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-1">
+        <div class="rounded-lg bg-surface border border-borderLine p-4 hover:border-borderHover transition-colors">
+          <div class="text-xl sm:text-2xl font-bold text-phosphor">15M+</div>
+          <div class="text-xs text-fgDim mt-1">trades / day</div>
+        </div>
+        <div class="rounded-lg bg-surface border border-borderLine p-4 hover:border-borderHover transition-colors">
+          <div class="text-xl sm:text-2xl font-bold text-cyanAccent">70%</div>
+          <div class="text-xs text-fgDim mt-1">latency reduced</div>
+        </div>
+        <div class="rounded-lg bg-surface border border-borderLine p-4 hover:border-borderHover transition-colors">
+          <div class="text-xl sm:text-2xl font-bold text-amberAccent">42,275</div>
+          <div class="text-xs text-fgDim mt-1">peak TPS</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. // PROJECTS SECTION -->
+    <section id="projects" aria-labelledby="projects-heading" class="space-y-5">
+      <div class="space-y-1">
+        <h2 id="projects-heading" class="text-xs uppercase tracking-wider text-fgDim font-semibold">// projects</h2>
+        <div class="flex items-center gap-2 text-sm">
+          <span class="text-phosphor select-none">$</span>
+          <span class="text-white font-medium">ls projects/ --verbose</span>
+        </div>
+      </div>
+
+      <div class="space-y-4">
+        <!-- Project Card 1: timelesstalk -->
+        <article class="rounded-lg bg-surface border border-borderLine p-5 hover:border-borderHover transition-colors space-y-3">
+          <div class="flex flex-wrap items-center justify-between gap-2">
+            <h3 class="text-sm sm:text-[15px] font-semibold text-white">
+              <span class="text-phosphor select-none">$</span> cd <span class="text-cyanAccent">charishma/timelesstalk</span>
+            </h3>
+            <div class="flex items-center gap-4 text-xs shrink-0">
+              <a href="https://timelesstalk.vercel.app" target="_blank" rel="noopener noreferrer" class="text-phosphor hover:underline underline-offset-4">live ↗</a>
+              <a href="https://github.com/Charishma-Bailapudi/timelesstalk" target="_blank" rel="noopener noreferrer" class="text-cyanAccent hover:underline underline-offset-4">github ↗</a>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap gap-1.5 text-[11px]">
+            <span class="px-2 py-0.5 rounded bg-obsidian border border-borderLine text-fgDim">next.js 14</span>
+            <span class="px-2 py-0.5 rounded bg-obsidian border border-borderLine text-fgDim">vercel ai sdk</span>
+            <span class="px-2 py-0.5 rounded bg-obsidian border border-borderLine text-fgDim">pinecone</span>
+            <span class="px-2 py-0.5 rounded bg-obsidian border border-borderLine text-fgDim">upstash redis</span>
+            <span class="px-2 py-0.5 rounded bg-obsidian border border-borderLine text-fgDim">clerk</span>
+            <span class="px-2 py-0.5 rounded bg-obsidian border border-borderLine text-fgDim">gemini</span>
+            <span class="px-2 py-0.5 rounded bg-obsidian border border-borderLine text-fgDim">elevenlabs</span>
+          </div>
+
+          <p class="text-fgMain text-[13px] sm:text-[14px] leading-relaxed">
+            RAG-powered AI persona chat — converse with 10 historical and legendary figures grounded in curated source material, or summon a new one enriched live from Wikipedia. Custom private personas can be seeded from your own notes. Built independently with retrieval-augmented generation so responses are grounded in real source text via Pinecone vector search.
+          </p>
+        </article>
+
+        <!-- Project Card 2: upi-daily-budget -->
+        <article class="rounded-lg bg-surface border border-borderLine p-5 hover:border-borderHover transition-colors space-y-3">
+          <div class="flex flex-wrap items-center justify-between gap-2">
+            <h3 class="text-sm sm:text-[15px] font-semibold text-white">
+              <span class="text-phosphor select-none">$</span> cd <span class="text-cyanAccent">charishma/upi-daily-budget</span>
+              <span class="text-fgDim font-normal text-xs ml-1">(Paisawise)</span>
+            </h3>
+            <div class="flex items-center gap-4 text-xs shrink-0">
+              <a href="https://upi-daily-budget.vercel.app/login" target="_blank" rel="noopener noreferrer" class="text-phosphor hover:underline underline-offset-4">live ↗</a>
+              <a href="https://github.com/Charishma-Bailapudi/upi-daily-budget" target="_blank" rel="noopener noreferrer" class="text-cyanAccent hover:underline underline-offset-4">github ↗</a>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap gap-1.5 text-[11px]">
+            <span class="px-2 py-0.5 rounded bg-obsidian border border-borderLine text-fgDim">react 19</span>
+            <span class="px-2 py-0.5 rounded bg-obsidian border border-borderLine text-fgDim">vite</span>
+            <span class="px-2 py-0.5 rounded bg-obsidian border border-borderLine text-fgDim">node</span>
+            <span class="px-2 py-0.5 rounded bg-obsidian border border-borderLine text-fgDim">express</span>
+            <span class="px-2 py-0.5 rounded bg-obsidian border border-borderLine text-fgDim">mongodb</span>
+            <span class="px-2 py-0.5 rounded bg-obsidian border border-borderLine text-fgDim">jwt</span>
+            <span class="px-2 py-0.5 rounded bg-obsidian border border-borderLine text-fgDim">telegram bot</span>
+          </div>
+
+          <p class="text-fgMain text-[13px] sm:text-[14px] leading-relaxed">
+            Full-stack daily budget simulator with IST-aware midnight rollover, atomic spend tracking via MongoDB increments, demo UPI checkout, and a Telegram bot for balance checks and spend alerts. Handles concurrency with atomic counter updates and a unique per-day snapshot index.
+          </p>
+        </article>
+
+        <!-- Project Card 3: distributed-order-processing-platform -->
+        <article class="rounded-lg bg-surface border border-borderLine p-5 hover:border-borderHover transition-colors space-y-3">
+          <div class="flex flex-wrap items-center justify-between gap-2">
+            <h3 class="text-sm sm:text-[15px] font-semibold text-white">
+              <span class="text-phosphor select-none">$</span> cd <span class="text-cyanAccent">charishma/distributed-order-processing-platform</span>
+            </h3>
+            <div class="flex items-center gap-4 text-xs shrink-0">
+              <a href="https://github.com/Charishma-Bailapudi/distributed-order-processing-platform" target="_blank" rel="noopener noreferrer" class="text-cyanAccent hover:underline underline-offset-4">github ↗</a>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap gap-1.5 text-[11px]">
+            <span class="px-2 py-0.5 rounded bg-obsidian border border-borderLine text-fgDim">java 17</span>
+            <span class="px-2 py-0.5 rounded bg-obsidian border border-borderLine text-fgDim">spring boot</span>
+            <span class="px-2 py-0.5 rounded bg-obsidian border border-borderLine text-fgDim">kafka</span>
+            <span class="px-2 py-0.5 rounded bg-obsidian border border-borderLine text-fgDim">postgresql</span>
+            <span class="px-2 py-0.5 rounded bg-obsidian border border-borderLine text-fgDim">apache ignite</span>
+          </div>
+
+          <p class="text-fgMain text-[13px] sm:text-[14px] leading-relaxed">
+            Event-driven order platform with three services — Order, Payment, Inventory — using the Saga pattern for distributed transactions, Transactional Outbox for reliable event delivery, and Ignite caching with Grafana monitoring.
+          </p>
+        </article>
+
+        <!-- Project Card 4: distributed-rate-limiter -->
+        <article class="rounded-lg bg-surface border border-borderLine p-5 hover:border-borderHover transition-colors space-y-3">
+          <div class="flex flex-wrap items-center justify-between gap-2">
+            <h3 class="text-sm sm:text-[15px] font-semibold text-white">
+              <span class="text-phosphor select-none">$</span> cd <span class="text-cyanAccent">charishma/distributed-rate-limiter</span>
+            </h3>
+            <div class="flex items-center gap-4 text-xs shrink-0">
+              <a href="https://github.com/Charishma-Bailapudi/distributed-rate-limiter" target="_blank" rel="noopener noreferrer" class="text-cyanAccent hover:underline underline-offset-4">github ↗</a>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap gap-1.5 text-[11px]">
+            <span class="px-2 py-0.5 rounded bg-obsidian border border-borderLine text-fgDim">java 17</span>
+            <span class="px-2 py-0.5 rounded bg-obsidian border border-borderLine text-fgDim">spring boot</span>
+            <span class="px-2 py-0.5 rounded bg-obsidian border border-borderLine text-fgDim">apache ignite</span>
+            <span class="px-2 py-0.5 rounded bg-obsidian border border-borderLine text-fgDim">bucket4j</span>
+            <span class="px-2 py-0.5 rounded bg-obsidian border border-borderLine text-fgDim">k6</span>
+          </div>
+
+          <p class="text-fgMain text-[13px] sm:text-[14px] leading-relaxed">
+            Reusable Spring Boot starter for distributed API rate limiting — Token Bucket and Sliding Window algorithms, state shared across instances via Ignite, load-tested with k6 for p50/p95/p99 latency.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- 5. // EXPERIENCE SECTION -->
+    <section id="experience" aria-labelledby="experience-heading" class="space-y-6">
+      <div class="space-y-1">
+        <h2 id="experience-heading" class="text-xs uppercase tracking-wider text-fgDim font-semibold">// experience</h2>
+        <div class="flex items-center gap-2 text-sm">
+          <span class="text-phosphor select-none">$</span>
+          <span class="text-white font-medium">git log --oneline --career</span>
+        </div>
+      </div>
+
+      <div class="space-y-7 border-l border-borderLine pl-4 sm:pl-5 ml-1">
+        <!-- Role 1: TCS -->
+        <div class="relative space-y-2.5">
+          <span class="absolute -left-[21px] sm:-left-[25px] top-1.5 w-2.5 h-2.5 rounded-full bg-phosphor ring-4 ring-obsidian"></span>
+          <div class="flex flex-wrap items-baseline justify-between gap-2">
+            <h3 class="text-white font-semibold text-sm sm:text-[15px]">
+              <span class="text-amberAccent">System Engineer</span> @ TCS, BFSI Product Engineering
+            </h3>
+            <span class="text-xs text-fgDim">Jul 2024 – present · Bangalore</span>
+          </div>
+          <ul class="space-y-2 text-[13px] sm:text-[14px] text-fgMain">
+            <li class="flex items-start gap-2.5">
+              <span class="text-phosphor select-none mt-0.5">›</span>
+              <span>Architected a batch streaming pipeline (Spring Batch, Kafka, AWS) for ASX clearing — 15M+ trades at 42,275 TPS, 2× the SLA target.</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <span class="text-phosphor select-none mt-0.5">›</span>
+              <span>Cut processing time ~70% with Apache Ignite caching and Kafka auto-commit tuning.</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <span class="text-phosphor select-none mt-0.5">›</span>
+              <span>Built trade-processing microservices across ASX, MCX, MCD using Java 17, Spring Boot, Kafka, Apache Ignite.</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Role 2: Amazon -->
+        <div class="relative space-y-2.5">
+          <span class="absolute -left-[21px] sm:-left-[25px] top-1.5 w-2.5 h-2.5 rounded-full bg-cyanAccent ring-4 ring-obsidian"></span>
+          <div class="flex flex-wrap items-baseline justify-between gap-2">
+            <h3 class="text-white font-semibold text-sm sm:text-[15px]">
+              <span class="text-amberAccent">SDE Intern</span> @ Amazon, CTAP Tech
+            </h3>
+            <span class="text-xs text-fgDim">Jan – Jun 2024 · Hyderabad</span>
+          </div>
+          <ul class="space-y-2 text-[13px] sm:text-[14px] text-fgMain">
+            <li class="flex items-start gap-2.5">
+              <span class="text-cyanAccent select-none mt-0.5">›</span>
+              <span>Shipped a marketplace-agnostic Smart Routing fix for large appliances — reduced annualized contact transfers by 912K and 445K combined.</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <span class="text-cyanAccent select-none mt-0.5">›</span>
+              <span>Built the CSIAS orphan-image deletion pipeline — SNS, SQS, DLQ, Lambda, AWS CDK, scheduled EventBridge triggers.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. // STACK SECTION -->
+    <section id="stack" aria-labelledby="stack-heading" class="space-y-5">
+      <div class="space-y-1">
+        <h2 id="stack-heading" class="text-xs uppercase tracking-wider text-fgDim font-semibold">// stack</h2>
+        <div class="flex items-center gap-2 text-sm text-white font-medium">
+          <span class="text-phosphor select-none">$</span>
+          <span>What's in my .zshrc</span>
+        </div>
+      </div>
+
+      <div class="rounded-lg bg-surface border border-borderLine p-4 sm:p-5 divide-y divide-borderLine/70 text-[13px] sm:text-[14px]">
+        <!-- languages -->
+        <div class="py-3 first:pt-0 last:pb-0 grid grid-cols-1 sm:grid-cols-[130px_1fr] gap-1.5 sm:gap-4 items-baseline">
+          <div class="text-amberAccent font-medium text-xs sm:text-[13px]">languages</div>
+          <div class="flex flex-wrap gap-x-4 gap-y-1.5 text-fgMain">
+            <span><span class="text-phosphor">›</span> Java 17</span>
+            <span><span class="text-phosphor">›</span> Python</span>
+          </div>
+        </div>
+
+        <!-- backend -->
+        <div class="py-3 first:pt-0 last:pb-0 grid grid-cols-1 sm:grid-cols-[130px_1fr] gap-1.5 sm:gap-4 items-baseline">
+          <div class="text-amberAccent font-medium text-xs sm:text-[13px]">backend</div>
+          <div class="flex flex-wrap gap-x-4 gap-y-1.5 text-fgMain">
+            <span><span class="text-phosphor">›</span> Spring Boot</span>
+            <span><span class="text-phosphor">›</span> Spring Batch</span>
+            <span><span class="text-phosphor">›</span> Spring Security</span>
+            <span><span class="text-phosphor">›</span> Microservices</span>
+            <span><span class="text-phosphor">›</span> REST APIs</span>
+          </div>
+        </div>
+
+        <!-- distributed -->
+        <div class="py-3 first:pt-0 last:pb-0 grid grid-cols-1 sm:grid-cols-[130px_1fr] gap-1.5 sm:gap-4 items-baseline">
+          <div class="text-amberAccent font-medium text-xs sm:text-[13px]">distributed</div>
+          <div class="flex flex-wrap gap-x-4 gap-y-1.5 text-fgMain">
+            <span><span class="text-phosphor">›</span> Kafka</span>
+            <span><span class="text-phosphor">›</span> Kafka Connect</span>
+            <span><span class="text-phosphor">›</span> Debezium</span>
+            <span><span class="text-phosphor">›</span> Apache Ignite</span>
+            <span><span class="text-phosphor">›</span> ActiveMQ Artemis</span>
+          </div>
+        </div>
+
+        <!-- cloud -->
+        <div class="py-3 first:pt-0 last:pb-0 grid grid-cols-1 sm:grid-cols-[130px_1fr] gap-1.5 sm:gap-4 items-baseline">
+          <div class="text-amberAccent font-medium text-xs sm:text-[13px]">cloud</div>
+          <div class="flex flex-wrap gap-x-4 gap-y-1.5 text-fgMain">
+            <span><span class="text-phosphor">›</span> AWS (EKS, RDS, Lambda, SQS, SNS, CDK)</span>
+            <span><span class="text-phosphor">›</span> Docker</span>
+            <span><span class="text-phosphor">›</span> Kubernetes</span>
+          </div>
+        </div>
+
+        <!-- databases -->
+        <div class="py-3 first:pt-0 last:pb-0 grid grid-cols-1 sm:grid-cols-[130px_1fr] gap-1.5 sm:gap-4 items-baseline">
+          <div class="text-amberAccent font-medium text-xs sm:text-[13px]">databases</div>
+          <div class="flex flex-wrap gap-x-4 gap-y-1.5 text-fgMain">
+            <span><span class="text-phosphor">›</span> PostgreSQL</span>
+            <span><span class="text-phosphor">›</span> Oracle</span>
+            <span><span class="text-phosphor">›</span> MySQL</span>
+            <span><span class="text-phosphor">›</span> MongoDB</span>
+          </div>
+        </div>
+
+        <!-- ai / genai -->
+        <div class="py-3 first:pt-0 last:pb-0 grid grid-cols-1 sm:grid-cols-[130px_1fr] gap-1.5 sm:gap-4 items-baseline">
+          <div class="text-amberAccent font-medium text-xs sm:text-[13px]">ai / genai</div>
+          <div class="flex flex-wrap gap-x-4 gap-y-1.5 text-fgMain">
+            <span><span class="text-phosphor">›</span> LangChain</span>
+            <span><span class="text-phosphor">›</span> LangGraph</span>
+            <span><span class="text-phosphor">›</span> RAG</span>
+            <span><span class="text-phosphor">›</span> MCP</span>
+            <span><span class="text-phosphor">›</span> Gemini</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. // MISC SECTION -->
+    <section id="misc" aria-labelledby="misc-heading" class="space-y-4">
+      <h2 id="misc-heading" class="text-xs uppercase tracking-wider text-fgDim font-semibold">// misc</h2>
+
+      <div class="space-y-3 text-[13px] sm:text-[14px]">
+        <div class="space-y-1">
+          <div class="flex items-center gap-2">
+            <span class="text-phosphor select-none">$</span>
+            <span class="text-white font-medium">cat currently-reading.txt</span>
+          </div>
+          <div class="pl-4 text-fgMain">
+            Sapiens <span class="text-fgDim">·</span> Bhagavad Gita <span class="text-fgDim">·</span> Meditations
+          </div>
+        </div>
+
+        <div class="space-y-1">
+          <div class="flex items-center gap-2">
+            <span class="text-phosphor select-none">$</span>
+            <span class="text-white font-medium">cat hobbies.txt</span>
+          </div>
+          <div class="pl-4 text-fgMain">
+            painting, reading (fiction + philosophy)
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. // CONTACT SECTION -->
+    <section id="contact" aria-labelledby="contact-heading" class="space-y-4">
+      <h2 id="contact-heading" class="text-xs uppercase tracking-wider text-fgDim font-semibold">// contact</h2>
+
+      <!-- Terminal Mail Prompt Box -->
+      <div class="rounded-lg bg-surface border border-borderLine p-4 flex flex-wrap items-center justify-between gap-3">
+        <div class="text-[13px] sm:text-[14px] break-all">
+          <span class="text-phosphor select-none mr-1.5">$</span>
+          <span class="text-fgMain">mail -s </span>
+          <span class="text-amberAccent">"hello"</span>
+          <a href="mailto:aswinicharishma0@gmail.com" class="text-cyanAccent hover:underline underline-offset-4 ml-1 font-medium">
+            aswinicharishma0@gmail.com
+          </a>
+        </div>
+
+        <button
+          id="copy-email-btn"
+          type="button"
+          aria-label="Copy email address to clipboard"
+          class="px-3 py-1.5 rounded bg-obsidian hover:bg-borderLine/70 border border-borderLine text-xs text-fgDim hover:text-phosphor transition-colors shrink-0 cursor-pointer"
+        >
+          copy
+        </button>
+      </div>
+
+      <!-- Social Links Row -->
+      <div class="flex flex-wrap items-center gap-x-6 gap-y-2 text-xs sm:text-[13px] pt-1">
+        <a
+          href="https://github.com/Charishma-Bailapudi"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-fgDim hover:text-cyanAccent transition-colors"
+        >
+          <span class="text-phosphor">·</span> github <span class="text-cyanAccent">@Charishma-Bailapudi</span>
+        </a>
+        <a
+          href="https://www.linkedin.com/in/bailapudi-aswini-charishma-1b6886233"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-fgDim hover:text-cyanAccent transition-colors"
+        >
+          <span class="text-phosphor">·</span> linkedin <span class="text-cyanAccent">in/bailapudi-aswini-charishma</span>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- 9. FOOTER -->
+  <footer class="border-t border-borderLine bg-surfaceAlt/50">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 py-6 flex flex-wrap items-center justify-between gap-2 text-xs text-fgDim">
+      <span>Connection ended · 0 packets lost</span>
+      <span class="text-fgDim/60">charishma@portfolio:~$ exit</span>
+    </div>
+  </footer>
+
+  <!-- Interactive Terminal, Clipboard Copy & Scroll-Spy Script -->
+  <script>
+    (function () {
+      const terminalBody = document.getElementById('terminal-body');
+      const terminalForm = document.getElementById('terminal-form');
+      const terminalInput = document.getElementById('terminal-input');
+      const terminalHistory = document.getElementById('terminal-history');
+      const cmdChips = document.querySelectorAll('.cmd-chip');
+      const copyEmailBtn = document.getElementById('copy-email-btn');
+
+      const commandHistory = [];
+      let historyIndex = -1;
+
+      // Command definitions matching portfolio sections
+      const commands = {
+        help: () => [
+          '<span class="text-amberAccent">Available commands:</span>',
+          '  <span class="text-cyanAccent">whoami</span>      — role &amp; current team',
+          '  <span class="text-cyanAccent">location</span>    — current city',
+          '  <span class="text-cyanAccent">projects</span>    — featured repositories &amp; live apps',
+          '  <span class="text-cyanAccent">experience</span>  — career commit log (TCS, Amazon)',
+          '  <span class="text-cyanAccent">stack</span>       — languages, backend, distributed, cloud &amp; AI',
+          '  <span class="text-cyanAccent">misc</span>        — reading list &amp; hobbies',
+          '  <span class="text-cyanAccent">contact</span>     — email, GitHub &amp; LinkedIn',
+          '  <span class="text-cyanAccent">clear</span>       — clear interactive terminal output',
+        ].join('<br>'),
+
+        whoami: () =>
+          'charishma — <span class="text-white">System Engineer</span>, TCS BFSI Product Engineering',
+
+        location: () =>
+          'Bangalore, India <span class="text-fgDim">(IST / UTC+5:30)</span>',
+
+        projects: () => [
+          '<span class="text-cyanAccent">timelesstalk</span> <span class="text-fgDim">— RAG-powered AI persona chat (Next.js 14, Pinecone, Gemini)</span>',
+          '<span class="text-cyanAccent">upi-daily-budget</span> <span class="text-fgDim">— IST-aware daily budget simulator &amp; Telegram bot (Paisawise)</span>',
+          '<span class="text-cyanAccent">distributed-order-processing-platform</span> <span class="text-fgDim">— Saga + Transactional Outbox (Java 17, Kafka, Ignite)</span>',
+          '<span class="text-cyanAccent">distributed-rate-limiter</span> <span class="text-fgDim">— Token Bucket &amp; Sliding Window Spring Boot starter</span>',
+          '<span class="text-fgDim text-xs">Tip: scroll to <a href="#projects" class="text-phosphor underline">#projects</a> for live demos &amp; repos.</span>',
+        ].join('<br>'),
+
+        experience: () => [
+          '<span class="text-amberAccent">Jul 2024–present</span> · System Engineer @ TCS (15M+ trades/day, 42,275 TPS, ~70% faster via Ignite)',
+          '<span class="text-amberAccent">Jan–Jun 2024</span>     · SDE Intern @ Amazon (Smart Routing fix &amp; CSIAS orphan-image deletion pipeline)',
+        ].join('<br>'),
+
+        stack: () => [
+          '<span class="text-amberAccent">languages:</span>   Java 17, Python',
+          '<span class="text-amberAccent">backend:</span>     Spring Boot, Spring Batch, Spring Security, Microservices, REST APIs',
+          '<span class="text-amberAccent">distributed:</span> Kafka, Kafka Connect, Debezium, Apache Ignite, ActiveMQ Artemis',
+          '<span class="text-amberAccent">cloud:</span>       AWS (EKS, RDS, Lambda, SQS, SNS, CDK), Docker, Kubernetes',
+          '<span class="text-amberAccent">databases:</span>   PostgreSQL, Oracle, MySQL, MongoDB',
+          '<span class="text-amberAccent">ai / genai:</span>  LangChain, LangGraph, RAG, MCP, Gemini',
+        ].join('<br>'),
+
+        misc: () =>
+          '<span class="text-amberAccent">reading:</span> Sapiens · Bhagavad Gita · Meditations<br><span class="text-amberAccent">hobbies:</span> painting, reading (fiction + philosophy)',
+
+        contact: () =>
+          'email: <a href="mailto:aswinicharishma0@gmail.com" class="text-cyanAccent underline">aswinicharishma0@gmail.com</a> · github: <a href="https://github.com/Charishma-Bailapudi" target="_blank" rel="noopener noreferrer" class="text-cyanAccent underline">@Charishma-Bailapudi</a>',
+      };
+
+      function escapeHtml(str) {
+        const div = document.createElement('div');
+        div.textContent = str;
+        return div.innerHTML;
+      }
+
+      function executeCommand(rawCmd) {
+        const trimmed = rawCmd.trim();
+        if (!trimmed) return;
+
+        commandHistory.push(trimmed);
+        historyIndex = commandHistory.length;
+
+        const normalized = trimmed.toLowerCase();
+
+        if (normalized === 'clear') {
+          terminalHistory.innerHTML = '';
+          return;
+        }
+
+        const entry = document.createElement('div');
+        entry.className = 'space-y-1';
+
+        const promptRow = document.createElement('div');
+        promptRow.className = 'flex items-center gap-2';
+        promptRow.innerHTML = `<span class="text-phosphor select-none">$</span><span class="text-white font-medium">${escapeHtml(trimmed)}</span>`;
+
+        const outputRow = document.createElement('div');
+        outputRow.className = 'pl-4 text-fgMain leading-relaxed';
+
+        if (Object.prototype.hasOwnProperty.call(commands, normalized)) {
+          outputRow.innerHTML = commands[normalized]();
+        } else {
+          outputRow.innerHTML = `<span class="text-amberAccent">zsh: command not found:</span> ${escapeHtml(trimmed)}. Type <span class="text-phosphor">help</span> to see available commands.`;
+        }
+
+        entry.appendChild(promptRow);
+        entry.appendChild(outputRow);
+        terminalHistory.appendChild(entry);
+      }
+
+      // Form submission
+      if (terminalForm && terminalInput) {
+        terminalForm.addEventListener('submit', function (e) {
+          e.preventDefault();
+          const val = terminalInput.value;
+          terminalInput.value = '';
+          executeCommand(val);
+        });
+
+        // Up/Down arrow history navigation
+        terminalInput.addEventListener('keydown', function (e) {
+          if (e.key === 'ArrowUp') {
+            if (commandHistory.length > 0 && historyIndex > 0) {
+              e.preventDefault();
+              historyIndex -= 1;
+              terminalInput.value = commandHistory[historyIndex];
+            }
+          } else if (e.key === 'ArrowDown') {
+            if (historyIndex < commandHistory.length - 1) {
+              e.preventDefault();
+              historyIndex += 1;
+              terminalInput.value = commandHistory[historyIndex];
+            } else {
+              historyIndex = commandHistory.length;
+              terminalInput.value = '';
+            }
+          }
+        });
+      }
+
+      // Click anywhere in terminal body to focus input (unless user is selecting text or clicking a link/button)
+      if (terminalBody && terminalInput) {
+        terminalBody.addEventListener('click', function (e) {
+          if (e.target.closest('a, button, input')) return;
+          const selection = window.getSelection();
+          if (selection && selection.toString().length > 0) return;
+          terminalInput.focus({ preventScroll: true });
+        });
+      }
+
+      // Quick command chips
+      cmdChips.forEach(function (chip) {
+        chip.addEventListener('click', function () {
+          const cmd = chip.getAttribute('data-cmd');
+          if (cmd) {
+            executeCommand(cmd);
+            if (terminalInput) {
+              terminalInput.focus({ preventScroll: true });
+            }
+          }
+        });
+      });
+
+      // One-click email copy using document.execCommand('copy')
+      if (copyEmailBtn) {
+        let copyTimeout = null;
+        copyEmailBtn.addEventListener('click', function () {
+          const email = 'aswinicharishma0@gmail.com';
+          try {
+            const tempInput = document.createElement('textarea');
+            tempInput.value = email;
+            tempInput.setAttribute('readonly', '');
+            tempInput.style.position = 'fixed';
+            tempInput.style.opacity = '0';
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+
+            copyEmailBtn.textContent = 'copied!';
+            copyEmailBtn.classList.remove('text-fgDim');
+            copyEmailBtn.classList.add('text-phosphor', 'border-phosphor/60');
+
+            if (copyTimeout) clearTimeout(copyTimeout);
+            copyTimeout = setTimeout(function () {
+              copyEmailBtn.textContent = 'copy';
+              copyEmailBtn.classList.remove('text-phosphor', 'border-phosphor/60');
+              copyEmailBtn.classList.add('text-fgDim');
+            }, 2000);
+          } catch (err) {
+            copyEmailBtn.textContent = 'aswinicharishma0@gmail.com';
+          }
+        });
+      }
+
+      // Subtle active section highlight in top quick-nav bar
+      const navLinks = document.querySelectorAll('.nav-link');
+      const sectionIds = ['about', 'projects', 'experience', 'stack', 'contact'];
+      const sections = sectionIds
+        .map((id) => document.getElementById(id))
+        .filter(Boolean);
+
+      function updateActiveNav() {
+        const scrollPos = window.scrollY + 140;
+        let currentId = '';
+        for (const sec of sections) {
+          if (sec.offsetTop <= scrollPos) {
+            currentId = sec.id;
+          }
+        }
+        navLinks.forEach((link) => {
+          const target = link.getAttribute('data-nav');
+          if (target === currentId) {
+            link.classList.add('text-phosphor', 'bg-surface');
+            link.classList.remove('text-fgDim');
+          } else {
+            link.classList.remove('text-phosphor', 'bg-surface');
+            link.classList.add('text-fgDim');
+          }
+        });
+      }
+
+      window.addEventListener('scroll', updateActiveNav, { passive: true });
+      updateActiveNav();
+    })();
+  </script>
+</body>
+</html>
